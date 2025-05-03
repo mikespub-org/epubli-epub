@@ -21,27 +21,27 @@
         {
             "name": "Epubli Developers",
             "email": "devs@epubli.com"
+        },
+        {
+            "name": "mikespub",
+            "homepage": "https://github.com/mikespub-org/epubli-epub",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": ">=8.2",
         "ext-dom": "*",
         "ext-zip": "*",
-        "epubli/common": "master"
+        "mikespub/epubli-common": "^1.0"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require-dev": {
-        "phpunit/phpunit": "~9.0"
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
             "Epubli\\Epub\\": "src/"
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/epubli/common.git"
-        }
-    ]
+    }
 }

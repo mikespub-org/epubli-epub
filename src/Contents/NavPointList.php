@@ -14,9 +14,7 @@ class NavPointList implements Iterator
     /** @var array|NavPoint[] */
     private $navPoints = [];
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function addNavPoint(NavPoint $navPoint)
     {
@@ -85,7 +83,7 @@ class NavPointList implements Iterator
      */
     public function valid(): bool
     {
-        return (bool)current($this->navPoints);
+        return (bool) current($this->navPoints);
     }
 
     /**

@@ -6,6 +6,7 @@ use DOMDocument;
 use Epubli\Common\Enum\InternetMediaType;
 use Epubli\Epub\Contents\NavPoint;
 use Epubli\Exception\Exception;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -366,7 +367,7 @@ class EpubTest extends TestCase
 
         $this->assertEquals('epubli-epub-titlepage.xhtml', $titlePage->getHref());
         $this->assertEquals('epubli-epub-titlepage', $titlePage->getId());
-        $this->assertEquals('application/xhtml+xml', (string)$titlePage->getMediaType());
+        $this->assertEquals('application/xhtml+xml', (string) $titlePage->getMediaType());
 
         // We expect an empty string since there is only an image but no text on that page.
         $this->assertEmpty(trim($titlePage->getContents()));
@@ -429,7 +430,6 @@ class EpubTest extends TestCase
     }
 
     /**
-     * @dataProvider provideContentsTestParameters
      * @param string $referenceStart The expected start of the extracted contents.
      * @param string $referenceEnd The expected end of the extracted contents.
      * @param int $referenceSize The expected size of the extracted contents.
@@ -438,6 +438,7 @@ class EpubTest extends TestCase
      * @throws Exception
      * @return void
      */
+    #[DataProvider('provideContentsTestParameters')]
     public function testContents(
         $referenceStart,
         $referenceEnd,
@@ -455,7 +456,7 @@ class EpubTest extends TestCase
      * Summary of provideContentsTestParameters
      * @return array<mixed>
      */
-    public function provideContentsTestParameters()
+    public static function provideContentsTestParameters()
     {
         return [
             ["Romeo and Juliet\n\nWilliam Shakespeare", "www.feedbooks.com\n\n    Food for the mind", 152879, false, 1],
@@ -465,7 +466,6 @@ class EpubTest extends TestCase
     }
 
     /**
-     * @dataProvider provideItemContentsTestParameters
      * @param string $referenceStart The expected start of the extracted contents.
      * @param string $referenceEnd The expected end of the extracted contents.
      * @param string $spineIndex The spine index of the item to extract contents from.
@@ -474,6 +474,7 @@ class EpubTest extends TestCase
      * @throws Exception
      * @return void
      */
+    #[DataProvider('provideItemContentsTestParameters')]
     public function testItemContents(
         $referenceStart,
         $referenceEnd,
@@ -491,7 +492,7 @@ class EpubTest extends TestCase
      * Summary of provideItemContentsTestParameters
      * @return array<mixed>
      */
-    public function provideItemContentsTestParameters()
+    public static function provideItemContentsTestParameters()
     {
         return [
             ['Act I', 'our toil shall strive to mend.', 3],
@@ -519,7 +520,6 @@ class EpubTest extends TestCase
     }
 
     /**
-     * @dataProvider provideItemContentsMarkupTestParameters
      * @param string $referenceFile
      * @param string $spineIndex
      * @param string $fragmentBegin
@@ -527,6 +527,7 @@ class EpubTest extends TestCase
      * @throws Exception
      * @return void
      */
+    #[DataProvider('provideItemContentsMarkupTestParameters')]
     public function testItemContentsMarkup($referenceFile, $spineIndex, $fragmentBegin = null, $fragmentEnd = null)
     {
         $spine = $this->epub->getSpine();
@@ -550,7 +551,7 @@ class EpubTest extends TestCase
      * Summary of provideItemContentsMarkupTestParameters
      * @return array<mixed>
      */
-    public function provideItemContentsMarkupTestParameters()
+    public static function provideItemContentsMarkupTestParameters()
     {
         return [
             [self::MARKUP_XML_1, 3],

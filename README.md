@@ -14,14 +14,8 @@ In your [composer](https://getcomposer.org/).json include the following:
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/epubli/epub.git"
-        }
-    ],
     "require": {
-        "epubli/epub": "dev-master"
+        "mikespub/epubli-epub": "^1.0"
     }
 }
 ```

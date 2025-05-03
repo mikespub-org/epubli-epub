@@ -136,7 +136,7 @@ class Epub
      */
     public function save()
     {
-        $this->zip->addFromString($this->packageDir.$this->packageFile, $this->packageXPath->document->saveXML());
+        $this->zip->addFromString($this->packageDir . $this->packageFile, $this->packageXPath->document->saveXML());
         // close and reopen zip archive
         $result = $this->zip->close();
         $this->zip->open($this->filename);
@@ -887,7 +887,7 @@ class Epub
      */
     private function buildMetaXPath($element, $attribute, $value, $caseSensitive = true)
     {
-        $xpath = '//opf:metadata/'.$element;
+        $xpath = '//opf:metadata/' . $element;
         if ($attribute) {
             $xpath .= "[@$attribute";
             if ($value) {
@@ -973,7 +973,7 @@ class Epub
         /** @var EpubDomElement $node */
         $node = $nodes->item(0);
 
-        return (string)$node->getAttrib('opf:content');
+        return (string) $node->getAttrib('opf:content');
     }
 
     /**
